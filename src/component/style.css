@@ -32,11 +32,11 @@
     justify-content: center;
     align-items:center;
     height: 100vh;
-    background: linear-gradient(135deg, #f3b4b4 14%, hsla(180, 28%, 79%, 1) 61%, hsla(96, 72%, 80%, 1) 86%);
 }
 .eachSet{
     padding: 1rem;
     width: 600px;
+    height: 500px;
     display: flex;
     justify-content: center;
     align-items:center;
@@ -235,4 +235,31 @@ input:hover{
   padding-top: 15px;
   padding-bottom: 15px;
   box-shadow: rgba(99, 99, 99, 0.2) 0 2px 6px 0, inset 0px -1px 0px rgba(0, 0, 0, 0.15);
+}
+@media screen and (max-width: 595px) {
+    .eachSet button{
+    position: absolute;
+    left: 40px;
+    bottom: 0;
+    }
+    .App{
+        width: 100%;
+    }
+    .eachSet{
+        width: 100%;
+        height: 100%;
+    }
+    body{
+        background: #4286f459;
+    }
+    .ans1{
+        width: 200px;
+    }
+    .eachSet p{
+        width: 300px;
+    }
+    .result{
+        width: 100%;
+        height: 100%;
+    }
 }

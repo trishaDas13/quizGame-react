@@ -6,7 +6,7 @@ const Result = (props) => {
 
     //todo ----- setting performance rate based on score -----
     function performanceRate(){
-        if(props.score < 3){
+        if(props.score <= 3){
             setRate('Very Poor, you need more knowledge. 😒');
         }
         else if(props.score >= 4 && props.score <= 6){

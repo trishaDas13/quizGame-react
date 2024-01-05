@@ -6,4 +6,6 @@
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
 }
-
+body{
+  background: linear-gradient(135deg, #f3b4b4 14%, hsla(180, 28%, 79%, 1) 61%, hsla(96, 72%, 80%, 1) 86%);
+}
