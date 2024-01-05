@@ -27,7 +27,7 @@ const Option = (props) => {
 
   
 
-  // //todo ----- changing questions by timer -----
+  //todo ----- changing questions by timer -----
   // useEffect(() => {
   //   setTimeout(() => {
   //     changeByAnswer();
@@ -48,18 +48,18 @@ const Option = (props) => {
 
   return (
     <>
-      <p>{seconds} second remaining</p>
+      <p className="timer">{seconds} second remaining</p>
       <form className="quiz-answers">
         {/* map through the options array to create a button for each option */}
         {
           options.map((item, i) =>{
             return(
-              <div className="ans1" key={nanoid()}>
+              <div className="ans1" key={nanoid()} onClick = {()=>changeByAnswer(item)}>
                 <input 
                   type="radio" 
                   id={`answer${i}`} 
                   name={`question${props.index}`}
-                  onClick = {()=>changeByAnswer(item)}
+                  
                 />
                 <label htmlFor="answer1a">{item}</label>
               </div>

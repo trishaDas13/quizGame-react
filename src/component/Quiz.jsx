@@ -1,6 +1,7 @@
 import React, { memo, useEffect, useState } from "react";
 import Option from "./Option";
 import Result from "./Result";
+import './style.css'
 
 function Quiz() {
   const [quizData, setQuizData] = useState([]);
@@ -31,13 +32,16 @@ function Quiz() {
 
   return (
     <>
+  
       {quizData.length > 0 ? (
         index === quizData.length ? (
           <Result score={score} length={quizData.length} />
         ) : (
           <div className="eachSet" key={currentQuestion.id}>
+              <h2>Quiz App</h2>
             <h3>Question {index + 1}</h3>
-            <p>{currentQuestion.question.text}</p>
+            <p className="question">{currentQuestion.question.text}</p>
+            
             <Option
               incorrectAns={currentQuestion.incorrectAnswers}
               correctAns={currentQuestion.correctAnswer}
@@ -46,13 +50,13 @@ function Quiz() {
               score={score}
               setScore={setScore}
             />
-            {index < quizData.length - 1 && (
-              <button onClick={nextButtonClicked}>Next Question</button>
+            {index < quizData.length && (
+              <button onClick={nextButtonClicked}>{"Skip >>"}</button>
             )}
           </div>
         )
       ) : (
-        <div className="loader"> Loading ....</div>
+        <div class="spinner"></div>
       )}
     </>
   );
