@@ -15,35 +15,31 @@ const Option = (props) => {
   //todo ----- push the correct answer and shuffle with incorrect answer -----
   let options = props.incorrectAns.slice();
   options.push(props.correctAns);
-  shuffleArray(options);
-
+  
+  
   //todo ----- changing questions by answer -----
   function changeByAnswer(item){
     if(item === props.correctAns){
       props.setScore(props.score+1);
     }
+    shuffleArray(options);
     props.incrementIdx();
   }
 
   
 
   //todo ----- changing questions by timer -----
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     changeByAnswer();
-  //   }, 10000);
-  // }, [])
-  // useEffect(() => {
-  //   const intervalId = setTimeout(() => {
-  //     setSeconds((prevSeconds) => prevSeconds - 1);
-  //   }, 1000);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setSeconds((prevSeconds) => prevSeconds - 1);
+    }, 1000);
 
-  //   if (seconds === 0) {
-  //     changeByAnswer();
-  //   }
+    if (seconds === 0) {
+      changeByAnswer();
+    }
 
-  //   return () => clearInterval(intervalId);
-  // },[seconds]);
+    return () => clearInterval(intervalId);
+  },[seconds]);
 
 
   return (
