@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState } from "react";
 import Option from "./Option";
-import Result from './Result';
+import Result from "./Result";
 
 function Quiz() {
   const [quizData, setQuizData] = useState([]);
@@ -28,32 +28,29 @@ function Quiz() {
   function nextButtonClicked() {
     setIndex((prevIndex) => prevIndex + 1);
   }
-  function handleIndex(){
-    setIndex((prevIndex) => prevIndex + 1);
-  }
 
   return (
     <>
-    
       {quizData.length > 0 ? (
-        <div className="eachSet" key={currentQuestion.id}>
-          <h3>Question {index + 1}</h3>
-          <p>{currentQuestion.question.text}</p>
-          <Option
-            incorrectAns={currentQuestion.incorrectAnswers}
-            correctAns={currentQuestion.correctAnswer}
-            idx={index}
-            incrementIdx={handleIndex}
-            score={score}
-            setScore={setScore}
-          />
-          {index < quizData.length - 1 && (
-            <button onClick={nextButtonClicked}>Next Question</button>
-          )}
-          {/* { index === quizData.length + 1 &&
-            // <Result score={score}/>
-          } */}
-        </div>
+        index === quizData.length ? (
+          <Result score={score} length={quizData.length} />
+        ) : (
+          <div className="eachSet" key={currentQuestion.id}>
+            <h3>Question {index + 1}</h3>
+            <p>{currentQuestion.question.text}</p>
+            <Option
+              incorrectAns={currentQuestion.incorrectAnswers}
+              correctAns={currentQuestion.correctAnswer}
+              idx={index}
+              incrementIdx={nextButtonClicked}
+              score={score}
+              setScore={setScore}
+            />
+            {index < quizData.length - 1 && (
+              <button onClick={nextButtonClicked}>Next Question</button>
+            )}
+          </div>
+        )
       ) : (
         <div className="loader"> Loading ....</div>
       )}
